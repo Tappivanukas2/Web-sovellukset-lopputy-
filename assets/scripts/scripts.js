@@ -148,7 +148,6 @@ function fetchFishData() {
     fetch('assets/data/kalat.csv')
         .then(response => response.text())
         .then(data => {
-            // Process the CSV data here
             const rows = data.split('\n');
             const headers = rows[0].split(',');
             const fishData = rows.slice(1).map(row => {
@@ -158,12 +157,24 @@ function fetchFishData() {
                     return obj;
                 }, {});
             });
-            console.log(fishData); // For debugging, remove in production
-            // You can now use fishData to update your UI or perform other operations
+            console.log(fishData);
         })
         .catch(error => console.error('Error fetching fish data:', error));
 }
 
-// Call the function when the page loads
 window.addEventListener('load', fetchFishData);
 
+function updateVideoContainer() {
+    const dropdown = document.getElementById('locationDropdown');
+    const videoContainer = document.getElementById('videoContainer');
+
+    dropdown.addEventListener('change', function() {
+        if (this.value === 'Sandfjordelva') {
+            videoContainer.style.display = 'block';
+        } else {
+            videoContainer.style.display = 'none';
+        }
+    });
+}
+
+window.addEventListener('load', updateVideoContainer);

@@ -42,22 +42,21 @@ h1 {
 }
 
 body {
-    padding-top: 60px; /* Adjust this value based on your h1's height */
+    padding-top: 60px;
 }
 
 .content-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: calc(100vh - 60px); /* Adjust for the padding-top on body */
-    padding: 0 20px; /* Add some horizontal padding */
+    height: calc(100vh - 60px);
+    padding: 0 20px;
 }
-
 .map-container {
     flex: 1;
     height: 50%;
     max-width: 50%;
-    padding-right: 20px; /* Add some space between map and image */
+    padding-right: 50px;
 }
 
 .map-container iframe {
@@ -79,4 +78,67 @@ body {
     width: auto;
     max-width: 100%;
     object-fit: contain;
+}
+
+.map-container {
+    position: relative;
+}
+
+#videoContainer {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#videoContainer iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: 400px;
+}
+
+.content-wrapper {
+    flex-direction: column;
+    height: auto;
+}
+
+.map-container,
+.image-frame {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.image-frame img {
+    max-height: 60vh;
+}
+
+@media screen and (min-width: 768px) {
+    .content-wrapper {
+        flex-direction: row;
+        height: 80vh;
+    }
+
+    .map-container,
+    .image-frame {
+        max-width: 50%;
+        width: 50%;
+        margin-bottom: 0;
+    }
+
+    .image-frame img {
+        max-height: 80vh;
+    }
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#videoContainer {
+    width: 100%;
+    order: 3;
 }
