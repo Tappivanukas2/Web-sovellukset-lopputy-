@@ -7,7 +7,7 @@ function showSlides() {
     slideIndex++;
     if (slideIndex > slides.length) {slideIndex = 1}
     slides[slideIndex-1].style.display = "block";
-    setTimeout(showSlides, 6000); // Change image every 3 seconds
+    setTimeout(showSlides, 6000);
 }
 
 
@@ -35,7 +35,7 @@ function changeImageBasedOnH2() {
                     'assets/images/sandfjordelva4.jpg'
                 ];
                 break;
-            case 'Vuollajohka':
+            case 'Vuolajohka':
                 images = [
                     'assets/images/vuollajohka1.jpg',
                     'assets/images/vuollajohka2.jpg',
@@ -98,7 +98,6 @@ function updateH2FromDropdown() {
     }
 }
 
-// Call the function when the page loads
 window.addEventListener('load', updateH2FromDropdown);
 
 function updateMapBasedOnDropdown() {
@@ -117,7 +116,7 @@ function updateMapBasedOnDropdown() {
                 case 'Sandfjordelva':
                     mapSrc = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1653.9201631046915!2d28.15583!3d69.64583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45cb49c8a2af65b9%3A0x9b46049f3f7c81c4!2sSandfjordelva!5e0!3m2!1sen!2sus!4v1683737000000!5m2!1sen!2sus';
                     break;
-                case 'Vuollajohka':
+                case 'Vuolajohka':
                     mapSrc = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1653.9201631046915!2d28.25583!3d69.54583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45cb49c8a2af65b9%3A0x9b46049f3f7c81c4!2sVuolajohka!5e0!3m2!1sen!2sus!4v1683737000000!5m2!1sen!2sus';
                     break;
                 case 'Valtijoki':
@@ -144,3 +143,27 @@ function updateMapBasedOnDropdown() {
 
 // Call the function when the page loads
 window.addEventListener('load', updateMapBasedOnDropdown);
+
+function fetchFishData() {
+    fetch('assets/data/kalat.csv')
+        .then(response => response.text())
+        .then(data => {
+            // Process the CSV data here
+            const rows = data.split('\n');
+            const headers = rows[0].split(',');
+            const fishData = rows.slice(1).map(row => {
+                const values = row.split(',');
+                return headers.reduce((obj, header, index) => {
+                    obj[header.trim()] = values[index].trim();
+                    return obj;
+                }, {});
+            });
+            console.log(fishData); // For debugging, remove in production
+            // You can now use fishData to update your UI or perform other operations
+        })
+        .catch(error => console.error('Error fetching fish data:', error));
+}
+
+// Call the function when the page loads
+window.addEventListener('load', fetchFishData);
+
