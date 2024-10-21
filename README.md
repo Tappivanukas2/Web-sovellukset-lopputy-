@@ -1,2 +1,2 @@
-# Web-sovellukset-lopputy-
+# Web-sovellukset-lopputyo
 AMK-web-sovellusten-lopputyö
