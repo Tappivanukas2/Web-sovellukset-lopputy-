@@ -178,3 +178,13 @@ function updateVideoContainer() {
 }
 
 window.addEventListener('load', updateVideoContainer);
+
+const fishDataContainer = document.getElementById('fishDataContainer');
+
+dropdown.addEventListener('change', function() {
+    if (this.value === 'Sandfjordelva') {
+        fishDataContainer.style.display = 'block';
+    } else {
+        fishDataContainer.style.display = 'none';
+    }
+});

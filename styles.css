@@ -142,3 +142,54 @@ body {
     width: 100%;
     order: 3;
 }
+
+#fishDataContainer {
+    width: 100%;
+    order: 4;
+    margin-top: 20px;
+}
+
+#fishDataTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#fishDataTable th,
+#fishDataTable td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+#fishDataTable thead {
+    background-color: #007bff;
+    color: white;
+}
+
+#fishDataTable tbody tr:nth-child(even) {
+    background-color: #f1f3f5;
+}
+
+#fishDataTable tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+@media screen and (min-width: 768px) {
+    #videoContainer,
+    #fishDataContainer {
+        width: 48%;
+        order: 3;
+    }
+
+    #fishDataContainer {
+        order: 4;
+    }
+
+    .content-wrapper {
+        flex-wrap: wrap;
+    }
+}
